@@ -9,7 +9,7 @@ export class AngularToSpringServiceService {
 
   constructor(private http:HttpClient) { }
 
-  private baseUrl = 'http://localhost:8080/api/v1/'; 
+  private baseUrl = 'http://localhost:2525/api/v1/user/'; 
 
   registerUser(user: any):Observable<any> {
     return this.http.post(`${this.baseUrl}register`, user);
@@ -17,6 +17,14 @@ export class AngularToSpringServiceService {
 
   loginUser(user: any):Observable<any> {
     return this.http.post(`${this.baseUrl}login`, user);
+  }
+
+  registerGoogleUser(user : any): Observable<any> {
+    return this.http.post(`${this.baseUrl}register/google`, user);
+  }
+
+  loginGoogleUser(user : any): Observable<any> {
+    return this.http.post(`${this.baseUrl}login/google`, user);
   }
 
 }

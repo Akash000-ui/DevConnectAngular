@@ -1,1 +1,76 @@
-<p>register works!</p>
+<p>Register Works!</p>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  
+  <div *ngIf="page === 1">
+    <div>
+      <label>name:</label>
+      <input type="text" formControlName="name" />
+      <div *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
+        <small *ngIf="registrationForm.get('name')?.errors?.['required']">name is required.</small>
+        <small *ngIf="registrationForm.get('name')?.errors?.['minlength']">name must be at least 3 characters.</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Email:</label>
+      <input type="email" formControlName="email" />
+      <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+        <small *ngIf="registrationForm.get('email')?.errors?.['required']">Email is required.</small>
+        <small *ngIf="registrationForm.get('email')?.errors?.['email']">Enter a valid email address.</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Password:</label>
+      <input type="password" formControlName="password" />
+      <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid">
+        <small *ngIf="registrationForm.get('password')?.errors?.['required']">Password is required.</small>
+        <small *ngIf="registrationForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Confirm Password:</label>
+      <input type="password" formControlName="confirmPassword" />
+      <div *ngIf="registrationForm.get('confirmPassword')?.touched && registrationForm.get('confirmPassword')?.invalid">
+        <small *ngIf="registrationForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</small>
+        <small *ngIf="registrationForm.get('confirmPassword')?.errors?.['mustMatch']">Passwords must match.</small>
+      </div>
+    </div>
+
+    <button type="button" (click)="nextPage()">Next</button>
+  </div>
+
+  <div *ngIf="page === 2">
+    <div>
+      <label>Skills:</label>
+      <div formArrayName="skills">
+        <div *ngFor="let skill of skills.controls; let i = index">
+          <input type="text" [formControlName]="i" />
+          <button type="button" (click)="removeSkill(i)" *ngIf="skills.length > 1">Remove</button>
+        </div>
+      </div>
+      <button type="button" (click)="addSkill()">Add Skill</button>
+      <div *ngIf="skills.invalid && skills.touched">
+        <small>At least one skill is required.</small>
+      </div>
+    </div>
+    
+
+    <div>
+      <label>Bio:</label>
+      <textarea formControlName="bio"></textarea>
+      <div *ngIf="registrationForm.get('bio')?.touched && registrationForm.get('bio')?.invalid">
+        <small *ngIf="registrationForm.get('bio')?.errors?.['required']">Bio is required.</small>
+        <small *ngIf="registrationForm.get('bio')?.errors?.['minlength']">Bio must be at least 10 characters.</small>
+      </div>
+    </div>
+
+    <button type="submit" >Submit</button>
+  </div>
+
+</form>
+
+<h2>Login with Google</h2>
+<div id="google-button"></div>
