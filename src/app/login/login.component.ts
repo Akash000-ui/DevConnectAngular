@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularToSpringServiceService } from '../angular-to-spring-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { error } from 'console';
+import { Router } from '@angular/router';
 
 declare const google: any;
 
@@ -12,7 +13,7 @@ declare const google: any;
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit{
-  constructor(private service: AngularToSpringServiceService , private fb:FormBuilder) { }
+  constructor(private service: AngularToSpringServiceService , private fb:FormBuilder , private router:Router) { }
 
   googleToken: string | null = null;
   loginForm !: FormGroup;
@@ -42,6 +43,20 @@ export class LoginComponent implements OnInit{
     this.service.loginGoogleUser({ id_token: this.googleToken }).subscribe(
       response => {
         console.log("Login successful", response);
+        localStorage.setItem('userId' , response.userId);
+        localStorage.setItem('jwt' , response.token);
+        
+        this.service.getPosts().subscribe(
+          response => {
+            console.log("Posts fetched successfully", response);
+            this.router.navigate(['/home'] , {
+              queryParams: { posts: JSON.stringify(response) }
+            });
+          },
+        error => {
+          console.log("Failed to fetch posts", error);
+        }
+      );
         // localStorage.setItem('token' , res.token);
         // localStorage.setItem('user' , JSON.stringify(res.user));
         // window.location.href = '/home';
@@ -58,6 +73,20 @@ export class LoginComponent implements OnInit{
           this.service.loginUser(this.loginForm.value).subscribe(
             response => {
               console.log("Login successful", response);
+              localStorage.setItem('userId' , response.userId);
+              localStorage.setItem('jwt' , response.token);
+              this.service.getPosts().subscribe(
+                response => {
+                  console.log("Posts fetched successfully", response);
+                  this.router.navigate(['/home'] , {
+                    queryParams: { posts: JSON.stringify(response) }
+                  });
+                },
+              error => {
+                console.log("Failed to fetch posts", error);
+              }
+            );
+              
               // localStorage.setItem('token' , res.token);
               // localStorage.setItem('user' , JSON.stringify(res.user));
               // window.location.href = '/home';

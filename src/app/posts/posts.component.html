@@ -1,0 +1,9 @@
+<form [formGroup]="post" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="title" placeholder="Title" />
+    <input type="text" formControlName="content" placeholder="Content" />
+    
+    <input type="file" (change)="onFileSelected($event)" />
+    
+    <button type="submit">Submit</button>
+  </form>
+  
