@@ -1,0 +1,39 @@
+<div class="search-container">
+  <div class="search-box">
+    <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (ngModelChange)="onSearch()" />
+    <button>🔍</button>
+  </div>
+
+  <div class="search-results" *ngIf="searchTerm && (usersByName?.length || usersBySkills?.length || posts?.length)">
+    <!-- Users by Name -->
+    <div *ngIf="usersByName.length">
+      <h4>👤 Users</h4>
+      <div *ngFor="let user of usersByName" class="result-item">
+        <strong>{{ user.userName }}</strong> — <small>{{ user.bio }}</small>
+      </div>
+    </div>
+
+    <!-- Users by Skills -->
+    <div *ngIf="usersBySkills.length">
+      <h4>🛠️ Skills</h4>
+      <div *ngFor="let user of usersBySkills" class="result-item">
+        <strong>{{ user.userName }}</strong> — <small>{{ user.bio }}</small>
+      </div>
+    </div>
+
+    <!-- Posts -->
+    <div *ngIf="posts.length">
+      <h4>📝 Posts</h4>
+      <div *ngFor="let post of posts" class="result-item">
+        <strong>{{ post.title }}</strong><br />
+        <small>{{ post.content }}</small><br />
+        <span>👍 {{ post.likesCount }} | 👎 {{ post.dislikesCount }}</span>
+        <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="Image" />
+      </div>
+    </div>
+  </div>
+
+  <div class="no-results" *ngIf="searchTerm && !usersByName.length && !usersBySkills.length && !posts.length">
+    <p>No results found for "<strong>{{ searchTerm }}</strong>"</p>
+  </div>
+</div>

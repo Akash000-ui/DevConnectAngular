@@ -1,27 +1,49 @@
 import { Component } from '@angular/core';
 import { AngularToSpringServiceService } from '../angular-to-spring-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-show-posts',
+  selector: 'app-profile-viewer',
   standalone: false,
-  templateUrl: './show-posts.component.html',
-  styleUrl: './show-posts.component.css'
+  templateUrl: './profile-viewer.component.html',
+  styleUrl: './profile-viewer.component.css'
 })
-export class ShowPostsComponent {
+export class ProfileViewerComponent {
 
-  constructor(private service : AngularToSpringServiceService) { }
-
+  userDetails: any = {}
   posts: any[] = [];
-  ngOnInit(): void {
-    this.service.getPosts().subscribe((res) => {
-      console.log("Posts fetched successfully");
-      console.log(res);
-      this.posts = res.data;
+
+  constructor(private service: AngularToSpringServiceService , private route : ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const userId = +params['id'];
+      if (userId) {
+        this.getUserDetails(userId);
+      } else {
+        console.error('User ID not found in query parameters');
+      }
+    })
+  }
+
+
+  getUserDetails(id: number) {
+    this.service.getuserDetails(id).subscribe((response) => {
+      console.log("_____________________________________________________________________");
+      console.log("User details fetched successfully:");
+
+      console.log(response);
+      this.userDetails = response.user;
+      this.posts = this.userDetails.posts;
     }, (error) => {
-      console.error("Error fetching posts:", error);    
+      console.error("Error fetching user details:", error);
+      console.error(error);
     });
   }
-  
+
+
+
+
   addLikes(userId:number , postId:number ): void {
     const likeDetails = {
       user_like_id: userId,
@@ -79,13 +101,8 @@ export class ShowPostsComponent {
       (res) => {
         console.log("Comment added successfully", res);
         this.service.getPosts().subscribe((response) => {
-          this.service.getPosts().subscribe((res) => {
-            console.log("Posts fetched successfully");
-            console.log(res);
-            this.posts = res.data;
-          }, (error) => {
-            console.error("Error fetching posts:", error);    
-          });
+          this.userDetails.posts = response;
+          // Clear the comment after successful submission
           this.commentMap[postId] = '';
         });
       },

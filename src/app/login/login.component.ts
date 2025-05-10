@@ -45,21 +45,8 @@ export class LoginComponent implements OnInit{
         console.log("Login successful", response);
         localStorage.setItem('userId' , response.userId);
         localStorage.setItem('jwt' , response.token);
-        
-        this.service.getPosts().subscribe(
-          response => {
-            console.log("Posts fetched successfully", response);
-            this.router.navigate(['/home'] , {
-              queryParams: { posts: JSON.stringify(response) }
-            });
-          },
-        error => {
-          console.log("Failed to fetch posts", error);
-        }
-      );
-        // localStorage.setItem('token' , res.token);
-        // localStorage.setItem('user' , JSON.stringify(res.user));
-        // window.location.href = '/home';
+        localStorage.setItem('AuthorName' , response.AuthorName);
+        this.router.navigate(['/home']);
       },
       error => {
         console.log("Login failed", error);
@@ -75,21 +62,8 @@ export class LoginComponent implements OnInit{
               console.log("Login successful", response);
               localStorage.setItem('userId' , response.userId);
               localStorage.setItem('jwt' , response.token);
-              this.service.getPosts().subscribe(
-                response => {
-                  console.log("Posts fetched successfully", response);
-                  this.router.navigate(['/home'] , {
-                    queryParams: { posts: JSON.stringify(response) }
-                  });
-                },
-              error => {
-                console.log("Failed to fetch posts", error);
-              }
-            );
-              
-              // localStorage.setItem('token' , res.token);
-              // localStorage.setItem('user' , JSON.stringify(res.user));
-              // window.location.href = '/home';
+              localStorage.setItem('AuthorName' , response.AuthorName);
+              this.router.navigate(['/home']);
             },
             error => {
               console.log("Login failed", error);

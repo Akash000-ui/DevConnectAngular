@@ -1,6 +1,7 @@
-<p>login works!</p>
+<p>Login works!</p>
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  
   <div>
     <label>Email:</label>
     <input type="email" formControlName="email" />
@@ -21,5 +22,10 @@
 
   <button type="submit" [disabled]="loginForm.invalid">Login</button>
 
+</form>
+
 <h2>Login with Google</h2>
-<div id="google-button"></div>
+<div id="google-button" class="hideOrUnhide"></div>
+
+<h3>If you don’t have an account</h3>
+<a routerLink="/register">Register</a>

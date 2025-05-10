@@ -1,23 +1,49 @@
-<p>show-posts works!</p>
+<!-- Show Posts Component Template -->
 
 <div>
     <ul *ngFor="let post of posts">
-        <li>
-
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.content }}</p>
-            <p><strong>Author:</strong> {{ post.authorName }}</p>
-            <ul>
-                <li *ngFor="let comment of post.comments">
-                    <p><strong>Comment:</strong> {{ comment.author }}</p>
-                    <p><strong>Commenter:</strong> {{ comment.content}}</p>
-                </li>
-                <li *ngIf="post.comments.length === 0">No comments yet.</li>
-            </ul>
-            <p><button (click)="addLikes(post.clientId , post.postId)">Like</button> {{ post.likesCount }}</p>
-            <p><button (click)="addDisLikes(post.clientId , post.postId)">DisLike</button> {{post.dislikesCount}}</p>  
-
-        </li>
-
+      <li>
+        <!-- Post Content -->
+        <h3>{{ post.title }}</h3>
+        <p><strong>Author:</strong> {{ post.authorName }}</p>
+        <p>{{ post.content }}</p>
+  
+        <!-- Like / Dislike Buttons -->
+        <p>
+          <button (click)="addLikes(post.clientId, post.postId)">Like</button> {{ post.likesCount }}
+          <button (click)="addDisLikes(post.clientId, post.postId)">Dislike</button> {{ post.dislikesCount }}
+        </p>
+  
+        <!-- Toggle Comments Button -->
+        <button (click)="toggleCommentVisibility(post.postId)">
+          {{ commentVisibility[post.postId] ? 'Hide' : 'Show' }} Comments 
+          ({{ post.comments.length }})
+        </button>
+  
+        <!-- Comments Section -->
+        <div *ngIf="commentVisibility[post.postId]">
+          <ul>
+            <li *ngFor="let comment of post.comments">
+              <p><strong>Commenter:</strong> {{ comment.author }}</p>
+              <p><strong>Comment:</strong> {{ comment.content }}</p>
+            </li>
+            <li *ngIf="post.comments.length === 0">No comments yet.</li>
+            <li *ngIf="post.comments.length > 0">
+              <strong>Total comments:</strong> {{ post.comments.length }}
+            </li>
+          </ul>
+  
+          <!-- Add New Comment -->
+          <textarea 
+            [(ngModel)]="commentMap[post.postId]" 
+            name="comment-{{ post.postId }}" 
+            placeholder="Add a comment">
+          </textarea>
+          <button (click)="addComment(post.clientId, post.postId)">Add Comment</button>
+        </div>
+  
+        <hr>
+      </li>
     </ul>
-</div>
+  </div>
+  

@@ -1,0 +1,26 @@
+<!-- user-profile.component.html -->
+
+<div class="backdrop" *ngIf="sidebarOpen" (click)="toggleSidebar()"></div>
+<!-- Hamburger button -->
+<div class="menu-icon" (click)="toggleSidebar()">
+  
+  &#9776; <!-- Three lines -->
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" [class.open]="sidebarOpen">
+  <span class="close-btn" (click)="toggleSidebar()">&times;</span>
+  <div class="profile-container" *ngIf="userDetails">
+    <!-- Profile Picture -->
+     <img [src]="userDetails.profileImageUrl" alt="Profile Picture" class="profile-pic" (click)="navigateToProfile()" />
+  
+    <!-- Profile Info -->
+    <div class="profile-info">
+      <p class="username"style="color: aqua;">{{ userDetails.name }}</p>
+      <p class="email" style="color: aqua;">{{ userDetails.email }}</p>
+    </div>
+  </div>
+  <a (click)="navigateToProfile()" (click)="toggleSidebar()">Show Profile</a>
+  <a routerLink="/home/update-profile" (click)="toggleSidebar()">Update Profile</a>
+  <a routerLink="/logout" (click)="toggleSidebar()">Logout</a>
+</div>

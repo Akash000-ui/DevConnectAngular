@@ -1,0 +1,66 @@
+div {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #2e2e2e;
+  }
+  
+  p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  ul li ul {
+    margin-top: 15px;
+    padding-left: 15px;
+    border-left: 3px solid #e0e0e0;
+  }
+  
+  ul li ul li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  button {
+    padding: 6px 12px;
+    margin-right: 10px;
+    background-color: #0073b1; /* LinkedIn blue */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #005580;
+  }
+  
+  strong {
+    color: #333;
+  }
+  

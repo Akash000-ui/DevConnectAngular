@@ -1,0 +1,100 @@
+/* Container styling */
+form {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 32px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Headings */
+  p {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #0a66c2;
+    margin-bottom: 20px;
+  }
+  
+  /* Labels */
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  /* Input fields */
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.2s;
+  }
+  
+  input:focus {
+    border-color: #0a66c2;
+    outline: none;
+  }
+  
+  /* Error messages */
+  small {
+    color: red;
+    font-size: 12px;
+  }
+  
+  /* Submit Button */
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #0a66c2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #004182;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Google Login section */
+  #google-button {
+    margin: 24px auto;
+    width: fit-content;
+  }
+  
+  /* Link to Register */
+  h3 {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+  }
+  
+  a {
+    display: block;
+    text-align: center;
+    color: #0a66c2;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 5px;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

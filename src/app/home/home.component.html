@@ -1,20 +1,27 @@
-<p>home works!</p>
-<div>
-  <h3>Search:</h3>
-  <input type="text" placeholder="Search for a book..." />
+<app-menu-bar></app-menu-bar>
+
+<div class="home-container">
+  <header class="header">
+    <p class="logo">LinkedClone</p>
+    <nav class="nav-bar">
+      <ul>
+        <li><a routerLink="show-posts" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="posts" routerLinkActive="active">Add Post</a></li>
+        <li><a routerLink="notifications" routerLinkActive="active">Notifications</a></li>
+        <li><a routerLink="mynetwork" routerLinkActive="active">My Network</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="search-section">
+      <app-search-component></app-search-component>
+    </div>
+
+    <hr />
+
+    <section class="router-section">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
 </div>
-
-<br/>
-<hr/>
-<p>home works!</p>
-<router-outlet></router-outlet> <!-- This outlet shows child components -->
-
-
-<nav>
-  <ul>
-    <li><a routerLink="show-posts">Home</a></li>
-    <li><a routerLink="posts">Add Post</a></li>
-    <li><a routerLink="notifications">Notifications</a></li>
-    <li><a routerLink="mynetwork">My Network</a></li>
-  </ul>
-</nav>

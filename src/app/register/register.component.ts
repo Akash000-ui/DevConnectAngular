@@ -47,6 +47,7 @@ export class RegisterComponent implements OnInit {
     );
 
     google.accounts.id.prompt();
+    
   }
 
   get skills(): FormArray {
@@ -114,17 +115,7 @@ export class RegisterComponent implements OnInit {
       this.service.registerGoogleUser(payload).subscribe(
         response => {
           console.log('User registered successfully', response);
-          this.service.getPosts().subscribe(
-            response => {
-              console.log("Posts fetched successfully", response);
-              this.router.navigate(['/home'] , {
-                queryParams: { posts: JSON.stringify(response) }
-              });
-            },
-          error => {
-            console.log("Failed to fetch posts", error);
-          }
-        );
+          this.router.navigate(['/login']).catch(err => console.error('Navigation error:', err));
         },
         error => {
           console.error('Error registering user', error);

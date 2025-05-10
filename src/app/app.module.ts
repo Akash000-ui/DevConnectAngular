@@ -13,6 +13,12 @@ import { HomeComponent } from './home/home.component';
 import { MyNetworkComponent } from './my-network/my-network.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ShowPostsComponent } from './show-posts/show-posts.component';
+import { SearchComponentComponent } from './search-component/search-component.component';
+import { FormsModule } from '@angular/forms';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { ProfileViewerComponent } from './profile-viewer/profile-viewer.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { LogoutComponent } from './logout/logout.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -32,6 +38,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  {path : 'logout', component: LogoutComponent},
   {
     path: 'home',
     component: HomeComponent,
@@ -40,7 +47,9 @@ const routes: Routes = [
       { path: 'posts', component: PostsComponent },
       { path: 'notifications', component: NotificationsComponent },
       { path: 'mynetwork', component: MyNetworkComponent },
-      { path: 'show-posts', component: ShowPostsComponent }
+      { path: 'show-posts', component: ShowPostsComponent },
+      {path : 'profile', component: ProfileViewerComponent},
+      {path : 'update-profile', component: UpdateProfileComponent},
     ]
   }
 ];
@@ -55,13 +64,19 @@ const routes: Routes = [
     HomeComponent,
     MyNetworkComponent,
     NotificationsComponent,
-    ShowPostsComponent
+    ShowPostsComponent,
+    SearchComponentComponent,
+    MenuBarComponent,
+    ProfileViewerComponent,
+    UpdateProfileComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
