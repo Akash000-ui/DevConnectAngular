@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { debounceTime, forkJoin, Subject } from 'rxjs';
 import { AngularToSpringServiceService } from '../angular-to-spring-service.service';
 import { error } from 'console';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-component',
@@ -15,11 +16,11 @@ export class SearchComponentComponent {
 
   private searchSubject: Subject<string> = new Subject<string>();
 
-   usersByName: any[] = [];
+   usersByName: any = {};
     usersBySkills: any[] = [];
     posts: any[] = [];
 
-  constructor(private service : AngularToSpringServiceService) {
+  constructor(private service : AngularToSpringServiceService , private router : Router) {
 
     this.searchSubject.pipe(debounceTime(300)).subscribe((term) => {
       this.performSearch(term);
@@ -47,6 +48,9 @@ export class SearchComponentComponent {
   }
 
 
+  // onPostClick(post:any) {
+  //     this.router.navigate(['/home/profile'], { queryParams: { id: this.usersByName.id } });
+  // }
 
   onSearch(){
     if(this.searchTerm.length <1) {
@@ -56,5 +60,10 @@ export class SearchComponentComponent {
       return;
     }
     this.searchSubject.next(this.searchTerm);
+  }
+
+  onUserClick(userId:any) {
+    this.router.navigate(['/home/profile'], { queryParams: { id: userId } });
+    this.searchTerm = '';
   }
 }

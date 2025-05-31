@@ -1,60 +1,227 @@
+/* Define CSS variables for light and dark modes, inspired by LinkedIn */
+:root {
+  --light-bg: #F3F2EF; /* LinkedIn's off-white background */
+  --light-text: #1A1A1A; /* Dark gray for high contrast */
+  --light-nav-bg: #FFFFFF; /* White header */
+  --light-nav-border: #D6D6D6; /* Subtle gray border */
+  --light-nav-text: #333333; /* Darker nav text */
+  --light-nav-hover: #0A66C2; /* LinkedIn blue for hover/active */
+  --light-dropdown-bg: #F7FAFC; /* Unused for dropdown, kept for consistency */
+  --light-dropdown-text: #1A1A1A; /* Dark dropdown text */
+  --light-bell: #333333; /* Dark bell icon */
+  --light-logo: #0A66C2; /* LinkedIn blue for logo */
+
+  --dark-bg: #1A2A34; /* Darker, professional dark mode */
+  --dark-text: #E0E0E0; /* Light gray for readability */
+  --dark-nav-bg: #263238; /* Dark header */
+  --dark-nav-border: #455A64; /* Subtle dark border */
+  --dark-nav-text: #E0E0E0; /* Light nav text */
+  --dark-nav-hover: #4FC3F7; /* Lighter blue for dark mode hover */
+  --dark-dropdown-bg: #455A64; /* Unused for dropdown, kept for consistency */
+  --dark-dropdown-text: #1A1A1A; /* Dark text for white dropdown */
+  --dark-bell: #E0E0E0; /* Light bell icon */
+  --dark-logo: #4FC3F7; /* Lighter blue for logo in dark mode */
+}
+
 .home-container {
-  font-family: 'Segoe UI', sans-serif;
+  background: var(--light-bg);
+  min-height: 100vh;
+  color: var(--light-text);
+  display: flex;
+  flex-direction: column;
+}
+
+.home-container.dark-mode {
+  background: var(--dark-bg);
+  color: var(--dark-text);
 }
 
 .header {
-  background-color: #0073b1;
-  padding: 15px 30px;
-  color: white;
+  background: var(--light-nav-bg);
+  border-bottom: 1px solid var(--light-nav-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Subtle shadow like LinkedIn */
+  border-radius: 0; /* Remove rounded corners for a cleaner look */
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  padding: 0.75rem 1.5rem;
+}
+
+.dark-mode .header {
+  background: var(--dark-nav-bg);
+  border-bottom: 1px solid var(--dark-nav-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
-  font-size: 1.5em;
-  font-weight: bold;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--light-logo);
+  flex-shrink: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* LinkedIn's font stack */
 }
 
-.nav-bar ul {
+.dark-mode .logo {
+  color: var(--dark-logo);
+}
+
+.nav-list {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 1.5rem; /* Tighter spacing like LinkedIn */
   margin: 0;
   padding: 0;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
-.nav-bar a {
-  color: white;
+.nav-link {
+  color: var(--light-nav-text);
   text-decoration: none;
   font-weight: 500;
+  font-size: 0.95rem; /* Slightly smaller for LinkedIn's clean look */
+  transition: color 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.nav-bar a.active {
-  text-decoration: underline;
+.dark-mode .nav-link {
+  color: var(--dark-nav-text);
 }
 
-.search-container {
-  margin: 20px;
+.nav-link:hover,
+.nav-link.active {
+  color: var(--light-nav-hover);
 }
 
-.search-results-box {
-  margin-top: 20px;
-  background: #f0f0f0;
-  padding: 15px;
-  border-radius: 10px;
+.dark-mode .nav-link:hover,
+.dark-mode .nav-link.active {
+  color: var(--dark-nav-hover);
 }
 
-.result-item {
-  margin-bottom: 15px;
-  padding: 10px;
-  background: white;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+.notification-bell {
+  position: relative;
+  cursor: pointer;
 }
 
-.search-section {
+.notification-bell i {
+  color: var(--light-bell);
+  font-size: 1.2rem; /* Slightly smaller for LinkedIn style */
+}
+
+.dark-mode .notification-bell i {
+  color: var(--dark-bell);
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: #FFFFFF; /* White background always */
+  color: var(--light-dropdown-text); /* Dark text for contrast */
+  padding: 0.75rem;
+  border-radius: 6px; /* Softer LinkedIn corners */
+  width: 300px; /* Wider for readability */
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* LinkedIn-style shadow */
+  border: 1px solid var(--light-nav-border); /* Subtle border */
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem; /* Space between boxed items */
+}
+
+.dark-mode .notification-dropdown {
+  background: #FFFFFF; /* White background always */
+  color: var(--dark-dropdown-text); /* Same dark text */
+  border: 1px solid var(--dark-nav-border); /* Darker border in dark mode */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.notification-item {
+  background: #F7FAFC; /* Light background for box */
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--light-nav-border); /* Box border */
+  border-radius: 6px; /* Rounded corners like LinkedIn */
+  font-size: 0.9rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: darkslategrey;
+}
+
+.dark-mode .notification-item {
+  background: #E1ECF4; /* Slightly darker box for dark mode */
+  border: 1px solid var(--dark-nav-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.notification-item:hover {
+  background: #E8F0FE; /* Lighter blue hover */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .notification-item:hover {
+  background: #C8E1F9; /* Slightly darker hover */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.notification-item p {
+  margin: 0;
+  color: var(--light-dropdown-text); /* Dark text */
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.dark-mode .notification-item p {
+  color: var(--dark-dropdown-text); /* Same dark text */
+}
+
+.notification-item small {
+  color: #666666; /* LinkedIn's muted text */
+  font-size: 0.8rem;
+}
+
+.dark-mode .notification-item small {
+  color: #666666; /* Same muted text for white background */
+}
+
+.main-content {
+  padding-top: 1.5rem;
+  flex-grow: 1;
+}
+
+#mode-icon {
+  font-size: 1.2rem; /* Smaller for LinkedIn style */
+  color: var(--light-nav-text);
+  transition: color 0.2s ease;
+}
+
+.dark-mode #mode-icon {
+  color: var(--dark-nav-hover);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .nav-list {
+    display: none; /* Hide nav on small screens, sidebar will be used */
+  }
+
+  .header {
+    justify-content: flex-start;
+  }
+
+  .logo {
+    margin-left: auto;
+  }
+}
+
+.home-container .header,
+.home-container .nav-link {
+  background: var(--light-nav-bg);
+  color: var(--light-nav-text) !important;
 }

@@ -19,7 +19,6 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { ProfileViewerComponent } from './profile-viewer/profile-viewer.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { LogoutComponent } from './logout/logout.component';
-
 // const routes: Routes = [
 //   { path: '', redirectTo: 'register', pathMatch: 'full' },
 //   { path: 'register', component: RegisterComponent },

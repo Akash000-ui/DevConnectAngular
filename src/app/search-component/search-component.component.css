@@ -6,6 +6,7 @@
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   font-family: 'Segoe UI', sans-serif;
+  color: #000; /* Makes all text inside container black */
 }
 
 .search-box {
@@ -21,6 +22,11 @@
   border-radius: 30px;
   font-size: 15px;
   transition: 0.3s;
+  color: #000; /* Input text black */
+}
+
+.search-box input::placeholder {
+  color: #666; /* Optional: slightly lighter placeholder */
 }
 
 .search-box input:focus {
@@ -52,22 +58,46 @@
 .result-item {
   padding: 10px 0;
   border-bottom: 1px solid #eee;
+  color: #000; /* Ensure result items have dark text */
 }
 
-.result-item img {
-  margin-top: 5px;
-  width: 100%;
-  max-width: 200px;
-  border-radius: 8px;
+.result-item strong {
+  color: #000;
+}
+
+.result-item small {
+  color: #000;
 }
 
 .no-results {
   margin-top: 15px;
-  color: #888;
+  color: #000; /* Changed from gray to black */
   font-style: italic;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Added for LinkedIn-style profile images and post images */
+.result-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.post-image {
+  margin-top: 8px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
 }

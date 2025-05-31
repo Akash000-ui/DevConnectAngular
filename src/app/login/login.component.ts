@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit{
       response => {
         console.log("Login successful", response);
         localStorage.setItem('userId' , response.userId);
+        console.log("USER ID : " + response.userId);
         localStorage.setItem('jwt' , response.token);
         localStorage.setItem('AuthorName' , response.AuthorName);
         this.router.navigate(['/home']);

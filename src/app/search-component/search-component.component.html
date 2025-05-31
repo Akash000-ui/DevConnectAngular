@@ -9,7 +9,9 @@
     <div *ngIf="usersByName.length">
       <h4>👤 Users</h4>
       <div *ngFor="let user of usersByName" class="result-item">
+      <div class="user-info" (click)="onUserClick(user.id)">
         <strong>{{ user.userName }}</strong> — <small>{{ user.bio }}</small>
+        </div>
       </div>
     </div>
 
@@ -17,7 +19,10 @@
     <div *ngIf="usersBySkills.length">
       <h4>🛠️ Skills</h4>
       <div *ngFor="let user of usersBySkills" class="result-item">
+        <div class="user-info" (click)="onUserClick(user.id)">
+          
         <strong>{{ user.userName }}</strong> — <small>{{ user.bio }}</small>
+        </div>
       </div>
     </div>
 
@@ -25,10 +30,12 @@
     <div *ngIf="posts.length">
       <h4>📝 Posts</h4>
       <div *ngFor="let post of posts" class="result-item">
+      <div class="post-info" (click)="onUserClick(post.userId)">
         <strong>{{ post.title }}</strong><br />
         <small>{{ post.content }}</small><br />
         <span>👍 {{ post.likesCount }} | 👎 {{ post.dislikesCount }}</span>
         <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="Image" />
+      </div>
       </div>
     </div>
   </div>

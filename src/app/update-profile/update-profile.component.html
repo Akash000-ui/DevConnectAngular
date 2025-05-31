@@ -1,62 +1,95 @@
 
-<div class="container" *ngIf="userDetails">
-    <h2>Update Profile</h2>
-  
-    <!-- Update Name and Bio -->
-    <form (ngSubmit)="updateProfile()">
-      <div>
-        <label>Name:</label>
-        <input type="text" [(ngModel)]="userDetails.user.name" name="name" required />
-      </div>
-  
-      <div>
-        <label>Bio:</label>
-        <textarea [(ngModel)]="userDetails.user.bio" name="bio"></textarea>
-      </div>
-  
-      <!-- Skills -->
-      <div>
-        <label>Skills (comma-separated):</label>
-        <input type="text" [value]="userDetails.user.skills.join(', ')" (input)="onSkillsChange($event)" />
-      </div>
-  
-      <!-- Profile Image -->
-      <div>
-        <label>Profile Image:</label>
-        <input type="file" (change)="onFileSelected($event)" />
-        <div *ngIf="userDetails.user.profileImageUrl">
-          <img [src]="userDetails.user.profileImageUrl" alt="Profile" width="100" />
-        </div>
-      </div>
-  
-      <button type="submit">Update Profile</button>
-    </form>
-  
-    <hr />
-  
-    <!-- User Posts -->
-    <div>
-      <h3>Your Posts</h3>
-      <div *ngFor="let post of userDetails.user.posts">
-        <h4>{{ post.title }}</h4>
-        <p>{{ post.content }}</p>
-        <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="Post Image" width="100" />
-        <br />
-  
-        <button (click)="editPost(post)">Edit</button>
-        <button (click)="deletePost(post.postId)">Delete</button>
+
+  <!-- Update Name and Bio -->
+  <div class="container" *ngIf="userDetails">
+  <h2 class="section-title">Update Profile</h2>
+
+  <form (ngSubmit)="updateProfile()" class="profile-form">
+    <div class="form-row">
+      <label for="name">Name:</label>
+      <input 
+        id="name" 
+        type="text" 
+        [(ngModel)]="userDetails.user.name" 
+        name="name" 
+        required 
+        placeholder="Enter your full name"
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="bio">Bio:</label>
+      <textarea 
+        id="bio" 
+        [(ngModel)]="userDetails.user.bio" 
+        name="bio" 
+        rows="3"
+        placeholder="Tell something about yourself"
+      ></textarea>
+    </div>
+
+    <div class="form-row">
+      <label for="skills">Skills (comma-separated):</label>
+      <input 
+        id="skills"
+        type="text" 
+        [value]="userDetails.user.skills.join(', ')" 
+        (input)="onSkillsChange($event)" 
+        placeholder="e.g., Angular, JavaScript, Node.js"
+      />
+    </div>
+
+    <div class="form-row">
+      <label for="profileImage">Profile Image:</label>
+      <input type="file" id="profileImage" (change)="onFileSelected($event)" />
+      <div *ngIf="userDetails.user.profileImageUrl" class="preview-img">
+        <img [src]="userDetails.user.profileImageUrl" alt="Profile" />
       </div>
     </div>
-  
-    <!-- Optional: Post Edit Form -->
-    <div *ngIf="selectedPost">
-      <h3>Edit Post</h3>
-      <form (ngSubmit)="updatePost(selectedPost.postId , selectedPost)">
-        <input type="text" [(ngModel)]="selectedPost.title" name="title" required />
-        <textarea [(ngModel)]="selectedPost.content" name="content"></textarea>
-        <button type="submit">Save</button>
-        <button type="button" (click)="cancelEdit()">Cancel</button>
-      </form>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Update Profile</button>
+    </div>
+  </form>
+
+  <hr />
+
+  <!-- User Posts -->
+  <div class="user-posts">
+    <h3>Your Posts</h3>
+    <div *ngFor="let post of userDetails.user.posts" class="post-item">
+      <h4>{{ post.title }}</h4>
+      <p>{{ post.content }}</p>
+      <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="Post Image" width="100" />
+      <br />
+
+      <button (click)="editPost(post)" class="btn btn-secondary">Edit</button>
+      <button (click)="deletePost(post.postId)" class="btn btn-danger">Delete</button>
     </div>
   </div>
-  
+
+  <!-- Post Edit Form -->
+  <div *ngIf="selectedPost" class="edit-post-form">
+    <h3>Edit Post</h3>
+    <form (ngSubmit)="updatePost(selectedPost.postId , selectedPost)">
+      <div class="form-group">
+        <input 
+          type="text" 
+          [(ngModel)]="selectedPost.title" 
+          name="title" 
+          required 
+          placeholder="Post title"
+        />
+      </div>
+      <div class="form-group">
+        <textarea 
+          [(ngModel)]="selectedPost.content" 
+          name="content" 
+          placeholder="Post content"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Save</button>
+      <button type="button" class="btn btn-light" (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>
+</div>

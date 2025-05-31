@@ -154,6 +154,18 @@ export class AngularToSpringServiceService {
         'Authorization': `Bearer ${token}`
       }
     });
+
+  }
+
+  private apiUrl = 'http://localhost:2525/api/notifications';
+
+  getUnreadNotifications(userId: number): Observable<any> {
+    const token = localStorage.getItem('jwt');
+    return this.http.get(`${this.apiUrl}/get-unread-notifications/${userId}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
   }
 
 }

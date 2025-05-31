@@ -1,0 +1,174 @@
+/* Define CSS variables for light and dark modes, inspired by LinkedIn */
+:root {
+  --light-bg: #FFFFFF; /* White background for notifications */
+  --light-text: #1A1A1A; /* Dark gray for high contrast */
+  --light-border: #D6D6D6; /* Subtle gray border */
+  --light-hover: #0A66C2; /* LinkedIn blue for hover */
+  --dark-bg: #FFFFFF; /* White background always */
+  --dark-text: #1A1A1A; /* Dark text for white background */
+  --dark-border: #455A64; /* Subtle dark border */
+  --dark-hover: #4FC3F7; /* Lighter blue for dark mode hover */
+}
+
+.notification-container {
+  background: var(--light-bg);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.dark-mode .notification-container {
+  background: var(--dark-bg);
+}
+
+.notification-content {
+  max-width: 600px; /* Narrow like LinkedIn's notification page */
+  margin: 0 auto;
+}
+
+.notification-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--light-text);
+  margin-bottom: 1.5rem;
+}
+
+.dark-mode .notification-title {
+  color: var(--dark-text);
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Space between boxed items */
+}
+
+.no-notifications {
+  color: #666666;
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.dark-mode .no-notifications {
+  color: #666666; /* Same muted text */
+}
+
+.notification-item {
+  background: #F7FAFC; /* Light background for box */
+  padding: 0.75rem;
+  border: 1px solid var(--light-border); /* Box border */
+  border-radius: 6px; /* Rounded corners like LinkedIn */
+  font-size: 0.9rem;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.dark-mode .notification-item {
+  background: #E1ECF4; /* Slightly darker box for dark mode */
+  border: 1px solid var(--dark-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.notification-item:hover {
+  background: #E8F0FE; /* Lighter blue hover */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .notification-item:hover {
+  background: #C8E1F9; /* Slightly darker hover */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.notification-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.sender-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.sender-avatar.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E0E0E0;
+  color: #666666;
+  font-size: 1.5rem;
+}
+
+.dark-mode .sender-avatar.placeholder {
+  background: #455A64;
+  color: #B0BEC5;
+}
+
+.notification-info {
+  flex-grow: 1;
+}
+
+.sender-name {
+  font-size: 0.95rem;
+  color: black;
+  margin: 0;
+}
+
+.dark-mode .sender-name {
+  color: black;
+}
+
+.notification-message {
+  margin: 0.25rem 0;
+  color: darkslategray;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.dark-mode .notification-message {
+  color: var(--dark-text);
+}
+
+.post-title {
+  display: block;
+  color: #666666;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0.25rem 0;
+}
+
+.dark-mode .post-title {
+  color: #666666; /* Same muted text */
+}
+
+.timestamp {
+  color: #666666;
+  font-size: 0.8rem;
+  display: block;
+}
+
+.dark-mode .timestamp {
+  color: #666666; /* Same muted text */
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .notification-content {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .notification-item {
+    padding: 0.5rem;
+  }
+
+  .sender-avatar {
+    width: 32px;
+    height: 32px;
+  }
+}

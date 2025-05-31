@@ -1,1 +1,24 @@
-<p>notifications works!</p>
+<div class="notification-container">
+  <div class="notification-content">
+    
+    <div class="notification-list">
+      <div *ngIf="notifications.length === 0" class="no-notifications">
+        No notifications yet.
+      </div>
+      <div *ngFor="let notification of notifications" class="notification-item">
+        <div class="notification-header">
+          <img *ngIf="notification.senderProfileImage" [src]="notification.senderProfileImage" alt="Sender Profile" class="sender-avatar" />
+          <div *ngIf="!notification.senderProfileImage" class="sender-avatar placeholder">
+            <i class="bi bi-person-circle"></i>
+          </div>
+          <div class="notification-info">
+            <strong class="sender-name">{{ notification.senderName }}</strong>
+            <p class="notification-message">{{ notification.message }}</p>
+            <em class="post-title">{{ notification.postTitle }}</em>
+            <small class="timestamp">{{ notification.createdAt | date }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

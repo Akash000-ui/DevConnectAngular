@@ -1,50 +1,17 @@
-form {
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 25px 30px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* Input Fields */
-  input[type="text"],
-  textarea {
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    transition: border 0.2s;
-    outline: none;
-  }
-  
-  input[type="text"]:focus,
-  textarea:focus {
-    border-color: #4fc3f7;
-  }
-  
-  /* File Input */
-  input[type="file"] {
-    padding: 8px 0;
-    color: #333;
-  }
-  
-  /* Submit Button */
-  button[type="submit"] {
-    background-color: #4fc3f7;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #039be5;
-  }
-  
+.glassy-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  color: white;
+}
+
+.glass-input::placeholder {
+  color: #ccc;
+}

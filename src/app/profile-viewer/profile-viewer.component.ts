@@ -16,8 +16,10 @@ export class ProfileViewerComponent {
   constructor(private service: AngularToSpringServiceService , private route : ActivatedRoute) { }
 
   ngOnInit() {
+    
     this.route.queryParams.subscribe(params => {
       const userId = +params['id'];
+      console.log("User ID from query params:", userId);
       if (userId) {
         this.getUserDetails(userId);
       } else {

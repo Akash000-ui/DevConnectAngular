@@ -1,24 +1,70 @@
-<app-menu-bar></app-menu-bar>
+<div class="home-container" [ngClass]="{'dark-mode': mode === 'dark'}">
+  <header class="header shadow-sm glassy-nav d-flex justify-content-between align-items-center px-4 py-3">
+    <app-menu-bar></app-menu-bar>
 
-<div class="home-container">
-  <header class="header">
-    <p class="logo">LinkedClone</p>
-    <nav class="nav-bar">
-      <ul>
-        <li><a routerLink="show-posts" routerLinkActive="active">Home</a></li>
-        <li><a routerLink="posts" routerLinkActive="active">Add Post</a></li>
-        <li><a routerLink="notifications" routerLinkActive="active">Notifications</a></li>
-        <li><a routerLink="mynetwork" routerLinkActive="active">My Network</a></li>
+    <nav class="nav-bar d-none d-md-block">
+      <ul class="nav-list d-flex align-items-center m-0 p-0 gap-4">
+        <!-- Home -->
+        <li>
+          <a routerLink="show-posts" routerLinkActive="active" class="nav-link d-flex align-items-center gap-1">
+            <i class="bi bi-house-door-fill"></i> Home
+          </a>
+        </li>
+
+        <!-- Add Post -->
+        <li>
+          <a routerLink="posts" routerLinkActive="active" class="nav-link d-flex align-items-center gap-1">
+            <i class="bi bi-pencil-square"></i> Add Post
+          </a>
+        </li>
+
+        <!-- Notifications -->
+        <!-- <li class="notification-bell position-relative mx-2" (click)="toggleNotifications()" style="cursor: pointer;">
+          <i class="bi bi-bell-fill fs-5"></i>
+          <span *ngIf="notifications.length > 0"
+                class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+            {{ notifications.length }}
+          </span>
+
+          <div *ngIf="showNotifications"
+               class="notification-dropdown shadow-lg animate__animated animate__fadeInRight">
+            <div *ngFor="let n of notifications" class="notification-item">
+              <p class="m-0">{{ n.message }}</p>
+              <small class="text-muted">{{ n.timestamp }}</small>
+            </div>
+          </div>
+        </li> -->
+
+        <li>
+        <a class="notification-bell" routerLink="/home/notifications">
+          <i class="bi bi-bell-fill"></i>
+          <span *ngIf="notifications.length > 0"
+                class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+            {{ notifications.length }}
+          </span>
+        </a>
+      </li>
+
+        <!-- My Network -->
+        <li>
+          <a routerLink="mynetwork" routerLinkActive="active" class="nav-link d-flex align-items-center gap-1">
+            <i class="bi bi-people-fill"></i> My Network
+          </a>
+        </li>
+
+        <!-- Mode Toggle -->
+        <li (click)="toggleMode()" style="cursor: pointer;">
+          <i class="bi" [ngClass]="mode === 'light' ? 'bi-moon-stars' : 'bi-sun-fill'" id="mode-icon"></i>
+        </li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <div class="search-section">
+  <main class="main-content container mt-4">
+    <p class="logo animate__animated animate__fadeInLeft" align="center">🚀 LinkedClone</p>
+    <div class="search-section mb-3">
       <app-search-component></app-search-component>
     </div>
-
-    <hr />
 
     <section class="router-section">
       <router-outlet></router-outlet>

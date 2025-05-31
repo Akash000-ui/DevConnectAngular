@@ -1,125 +1,44 @@
-div {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 15px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* User Info Section */
-.profile-section {
-  background-color: #f5f9ff;
-  border: 1px solid #cce0ff;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.profile-section h2 {
-  margin-top: 0;
-  font-size: 1.8em;
-  color: #1a1a1a;
-}
-
-.profile-section img {
-  margin-top: 10px;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #0073b1;
-}
-
-/* Skills List */
-.profile-section ul {
-  margin-top: 10px;
-  padding-left: 20px;
-}
-
-.profile-section ul li {
-  margin-bottom: 5px;
-  color: #0073b1;
-  font-weight: 500;
-}
-
-/* Posts List */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.5em;
-  color: #2e2e2e;
-}
-
-p {
-  margin: 5px 0;
-  color: #555;
-}
-
-ul li ul {
-  margin-top: 15px;
-  padding-left: 15px;
-  border-left: 3px solid #e0e0e0;
-}
-
-ul li ul li {
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
-}
-
-/* Post Image */
-img[alt="Post Image"] {
-  display: block;
-  margin: 10px 0;
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-/* Buttons */
-button {
-  padding: 6px 12px;
-  margin-right: 10px;
-  background-color: #0073b1;
+.glassy-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #005580;
+.profile-img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border: 3px solid #ffffff55;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-strong {
-  color: #333;
+.post-card {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Textarea for comments */
-textarea {
-  width: 100%;
-  height: 60px;
-  margin-top: 10px;
-  padding: 8px;
-  font-family: inherit;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  resize: vertical;
-  font-size: 1em;
+.glass-input {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: white;
+}
+
+.glass-input::placeholder {
+  color: #ccc;
+}
+
+.no-image {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #444;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-size: 0.9rem;
 }

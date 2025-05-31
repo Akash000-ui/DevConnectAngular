@@ -1,9 +1,46 @@
-<form [formGroup]="post" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="title" placeholder="Title" />
-    <input type="text" formControlName="content" placeholder="Content" />
-    
-    <input type="file" (change)="onFileSelected($event)" />
-    
-    <button type="submit">Submit</button>
-  </form>
-  
+<div class="container mt-5">
+  <div class="glassy-card shadow-lg rounded-4 p-4 animate__animated animate__fadeInUp">
+    <h3 class="mb-4 text-center text-primary fw-bold">✍️ Create a New Post</h3>
+
+    <form [formGroup]="post" (ngSubmit)="onSubmit()">
+      <!-- Title -->
+      <div class="mb-3">
+        <label class="form-label text-white">Post Title</label>
+        <input
+          type="text"
+          class="form-control glass-input text-white"
+          formControlName="title"
+          placeholder="Enter a catchy title"
+        />
+      </div>
+
+      <!-- Content -->
+      <div class="mb-3">
+        <label class="form-label text-white">Post Content</label>
+        <textarea
+          class="form-control glass-input text-white"
+          formControlName="content"
+          rows="5"
+          placeholder="Share your thoughts..."
+        ></textarea>
+      </div>
+
+      <!-- Image Upload -->
+      <div class="mb-3">
+        <label class="form-label text-white">Upload Image (optional)</label>
+        <input
+          type="file"
+          class="form-control glass-input text-white"
+          (change)="onFileSelected($event)"
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="d-grid">
+        <button type="submit" class="btn btn-outline-light btn-lg rounded-pill">
+          🚀 Share Post
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

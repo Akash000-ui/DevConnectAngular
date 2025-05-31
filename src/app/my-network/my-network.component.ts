@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './my-network.component.css'
 })
 export class MyNetworkComponent {
-
+    
 }
